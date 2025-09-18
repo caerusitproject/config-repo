@@ -16,8 +16,8 @@ spring:
   kafka:
     bootstrap-servers: localhost:29092
     topic:
-      userRegistered: USER_REGISTERED
-      passwordReset: PASSWORD_RESET_REQUESTED
+      user-registered: USER_REGISTERED
+      password-reset: PASSWORD_RESET_REQUESTED
 
   data:
     redis:
