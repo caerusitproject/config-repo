@@ -20,6 +20,9 @@ cors:
   allowed-origins: "http://localhost:3006"
 
 eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
   instance:
     prefer-ip-address: true
     hostname: api-gateway-service
