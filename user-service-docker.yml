@@ -28,6 +28,9 @@ spring:
       port: 6379
 
 eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
   instance:
     prefer-ip-address: false
     hostname: user-service
