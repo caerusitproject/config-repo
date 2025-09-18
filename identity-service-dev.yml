@@ -30,10 +30,6 @@ application:
       refresh-token:
         expiration: 1296000000 # 15 days in ms
 
-
-cors:
-  allowed-origins: "*"
-
 services:
   user-service:
     url: http://localhost:8081
