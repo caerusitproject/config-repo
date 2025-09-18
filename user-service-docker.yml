@@ -1,0 +1,43 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/user_service
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://identity-service:8086/.well-known/jwks.json
+
+  kafka:
+    bootstrap-servers: broker:29092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    topic:
+      user-registered: USER_REGISTERED
+      password-reset: PASSWORD_RESET_REQUESTED
+
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    hostname: user-service
+    instance-id: ${spring.application.name}:${server.port}
+
+camel:
+  springboot:
+    name: userservice-camel
+  component:
+    kafka:
+      brokers: broker:29092
+      requestTimeoutMs: 20000
+      retryBackoffMs: 5000

@@ -1,0 +1,35 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user_service
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8086/.well-known/jwks.json
+
+  kafka:
+    bootstrap-servers: localhost:29092
+    topic:
+      user-registered: USER_REGISTERED
+      password-reset: PASSWORD_RESET_REQUESTED
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}
+
+camel:
+  springboot:
+    name: userservice-camel

@@ -1,0 +1,30 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: api-gateway-service
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://identity-service:8086/.well-known/jwks.json
+
+cors:
+  allowed-origins: "http://localhost:3006"
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: api-gateway-service
+    instance-id: ${spring.application.name}:${server.port}
+
+logging:
+  level:
+    org.springframework.data.redis: DEBUG
