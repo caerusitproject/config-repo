@@ -1,6 +1,13 @@
 spring:
   application:
     name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/caerusitproject/config-repo.git
+          default-label: main
+          clone-on-start: true
 eureka:
   client:
     service-url:
